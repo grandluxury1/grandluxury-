@@ -92,3 +92,35 @@
     </script>
 </body>
 </html>
+// Переключение темы
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+});
+
+// Советы (рандомные)
+const quotes = [
+  "Всегда стремись к лучшему!",
+  "Креативность — ключ к успеху.",
+  "Не бойся экспериментировать.",
+  "Терпение и труд всё перетрут.",
+  "Настоящий luxury — это комфорт и стиль."
+];
+
+function showRandomQuote() {
+  const quoteElem = document.getElementById('quote');
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  quoteElem.textContent = quotes[randomIndex];
+}
+
+showRandomQuote();
+
+// Обработка формы
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // отменить отправку по умолчанию
+
+  alert(`Спасибо, ${form.name.value}! Ваше сообщение отправлено.`);
+
+  form.reset();
+});
