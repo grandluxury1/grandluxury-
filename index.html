@@ -1,76 +1,221 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Grand Luxury</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #d4f1c5;
-            background: url('https://i.imgur.com/JC9B13O.png') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            text-shadow: 0 0 8px #1f530f;
-        }
-        header {
-            background-color: rgba(11, 61, 11, 0.7);
-            padding: 30px 40px;
-            margin-top: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 0 20px #4caf50;
-        }
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 4px;
-        }
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-        }
-        .btn {
-            background-color: #4caf50;
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.3rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(72, 187, 72, 0.7);
-            transition: background-color 0.3s ease;
-            margin: 10px;
-            display: inline-block;
-        }
-        .btn:hover {
-            background-color: #2e7d32;
-        }
-        footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 1rem;
-            color: #a0d6a0;
-            text-shadow: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GrandLuxury</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0f2027;
+      --text-color: #fff;
+      --accent: #00ff99;
+    }
+
+    body.light {
+      --bg-color: #f9f9f9;
+      --text-color: #111;
+      --accent: #007acc;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #111;
+      padding-top: 60px;
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+      z-index: 999;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 25px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #222;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    .search-box {
+      margin: 30px auto;
+      max-width: 400px;
+      display: flex;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      padding: 12px 20px;
+      background: var(--accent);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .animation-box {
+      margin-top: 40px;
+      font-size: 2rem;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); color: var(--accent); }
+      50% { transform: scale(1.2); color: white; }
+    }
+
+    section {
+      margin: 60px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: 768px) {
+      .main-content {
+        margin-left: 240px;
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>GRAND LUXURY</h1>
-        <p>Подпишись на мой телеграм канал, там я много чего выкладываю</p>
-        <a href="https://t.me/Elvin2025P" target="_blank" class="btn">Перейти в Telegram канал</a>
-        <a href="https://t.me/Elvin2025P" target="_blank" class="btn">Другие ссылки</a>
-    </header>
 
-    <footer>
-        © 2025 Grand Luxury. Все права защищены.
-    </footer>
+  <button class="menu-btn" onclick="toggleSidebar()">☰ Меню</button>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓 Тема</button>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#contacts">Контакты</a>
+    <a href="#email">Почта</a>
+    <a href="#about">О нас</a>
+  </div>
+
+  <div class="main-content">
+    <h1>GrandLuxury</h1>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Поиск по сайту..." />
+      <button onclick="search()">Найти</button>
+    </div>
+
+    <div class="animation-box" id="animatedText">🌟 GrandLuxury 🌟</div>
+
+    <section id="contacts">
+      <h2>Контакты</h2>
+      <p>Телефон: +7 999 000-00-00</p>
+      <p>Адрес: г. Москва, ул. Примерная, д.1</p>
+    </section>
+
+    <section id="email">
+      <h2>Почта</h2>
+      <p>Связь по email: example@mail.ru</p>
+    </section>
+
+    <section id="about">
+      <h2>О нас</h2>
+      <p>Мы предоставляем лучшие цифровые решения с индивидуальным подходом к каждому клиенту.</p>
+    </section>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    }
+
+    function search() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      if (!input.trim()) return alert("Введите запрос для поиска.");
+      alert("Ищем по сайту: " + input);
+    }
+
+    // Загрузка темы
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light');
+      }
+    });
+
+    // JS анимация текста
+    const animatedText = document.getElementById('animatedText');
+    let words = ["🌟 GrandLuxury 🌟", "✨ GrandLuxury ✨", "🔥 GrandLuxury 🔥"];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % words.length;
+      animatedText.textContent = words[index];
+    }, 3000);
+  </script>
+
 </body>
 </html>
